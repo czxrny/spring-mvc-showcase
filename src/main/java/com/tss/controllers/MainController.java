@@ -12,10 +12,24 @@ import org.springframework.core.SpringVersion;
 
 import com.tss.services.TaskService;
 import com.tss.dtos.TaskDTO;
+import com.tss.entities.Task;
 import java.util.List;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PostMapping;
+import com.tss.repositories.TaskRepository;
+import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 public class MainController {
+    
+    private final TaskRepository taskRepository;
+
+    @Autowired
+    public MainController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
     
     @Autowired
     SessionComponent sessionComponent;
@@ -75,4 +89,25 @@ public class MainController {
         model.addAttribute("tasks", tasks);        
         return "showtasks.html";
     }
+    
+    @GetMapping("/showAddTaskForm")
+    public String showAddTaskForm(Task task) {
+        return "addtaskform.html";
+    }
+
+    @PostMapping("/addtask")
+    public String addTask(@ModelAttribute Task task, BindingResult result, Model model) {
+                System.err.println("wszed");
+
+        if (result.hasErrors()) {
+            System.err.println(result.getAllErrors());
+            return "redirect:/showtasks";
+        }
+        System.err.println("Saving task: " + task);
+        task.setCreatedAt(LocalDateTime.now());
+        taskRepository.save(task);
+        return "redirect:/showtasks";
+    }
+    
+    
 }

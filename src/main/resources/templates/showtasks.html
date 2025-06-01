@@ -22,10 +22,11 @@
             text-align: center;
         }
     </style>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
 
-<h2>Task List (loaded directly from Task entity)</h2>
+<h2>Task List</h2>
 
 <table>
     <thead>
@@ -46,13 +47,18 @@
             <td th:text="${task.id}"></td>
             <td th:text="${task.name}"></td>
             <td th:text="${task.description}"></td>
-            <td th:text="${#temporals.format(task.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
-            <td th:text="${#temporals.format(task.dueTo, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${task.createdAt}"></td>
+            <td th:text="${task.dueTo}"></td>
             <td th:text="${task.priority}"></td>
         </tr>
     </tbody>
 </table>
-
+    <div class="container">
+        <div class="card">
+            <div class="card-title">Add task</div>
+            <div class="card-description">Add new task.</div>
+            <a class="button" th:href="@{/showAddTaskForm}">Go</a>
+        </div>
 </body>
 </html>
 

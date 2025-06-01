@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 import com.tss.models.Priority;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Task implements Serializable {
@@ -23,8 +24,10 @@ public class Task implements Serializable {
 
     private String description;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime createdAt;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private LocalDateTime dueTo;
 
     @Enumerated(EnumType.STRING)
