@@ -64,6 +64,8 @@
             <td th:text="${task.dueTo}"></td>
             <td th:text="${task.priority}"></td>
             <td>
+                <a th:href="@{/showEditTaskForm/{id}(id=${task.id})}" class="btn btn-primary mr-1">
+                <i class="fas fa-edit"></i> Edit</a>
                 <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">
                 <i class="fas fa-trash-alt"></i> Delete </a>
             </td>

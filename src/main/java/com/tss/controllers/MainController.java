@@ -101,13 +101,32 @@ public class MainController {
     public String addTask(@ModelAttribute Task task, BindingResult result, Model model) {
         if (result.hasErrors()) {
             System.err.println(result.getAllErrors());
-            return "redirect:/showtasks";
+            return "addtaskform.html";
         }
         System.err.println("Saving task: " + task);
         task.setCreatedAt(LocalDateTime.now());
         taskRepository.save(task);
         return "redirect:/showtasks";
     }
+    
+    @GetMapping("/showEditTaskForm/{id}")
+    public String showEditTaskForm(@PathVariable("id") long id, Model model) {
+        Task task = taskRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
+        model.addAttribute("task", task);
+        return "edittaskform.html";
+    }
+
+    @PostMapping("/edittask/{id}")
+    public String editTask(@PathVariable("id") long id, Task task, BindingResult result) {
+        if (result.hasErrors()) {
+            task.setId(id);
+            return "edittaskform.html";
+        }
+        taskRepository.save(task);
+        return "redirect:/showtasks";
+    }
+
     
     @GetMapping("/deleteTask/{id}")
     public String deleteTask(@PathVariable("id") long id, Model model) {
