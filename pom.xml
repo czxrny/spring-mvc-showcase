@@ -29,6 +29,8 @@
 	</scm>
 	<properties>
 		<java.version>17</java.version>
+                <timestamp>${maven.build.timestamp}</timestamp>
+                <maven.build.timestamp>yyyy-MM-DD HH:mm</maven.build.timestamp>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,13 +52,27 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+                <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-actuator</artifactId>
+                </dependency>
 	</dependencies>
 
 	<build>
+            <finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+                                <executions>
+                                    <execution>
+                                        <goals>
+                                            <goal>
+                                                build-info
+                                            </goal>
+                                        </goals>
+                                    </execution>
+                                </executions>
 			</plugin>
 		</plugins>
 	</build>

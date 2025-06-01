@@ -9,7 +9,28 @@
               href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous">
     </head>
     <body>
-        <div>TODO write content</div>
-        <td th:text="${counterValue}"></td>
+        <div>
+            <a th:href="@{/actuator}">Actuator</a> <br />
+            <a th:href="@{/actuator/info}">Actuator Info</a> <br />
+        </div>
+
+        Spring version: <span th:text="${springVersion}">N/A</span> <br />
+
+        JDK version from pom.xml via application.properties: 
+        <span th:text="${jdkVersion}">N/A</span> <br />
+
+        Spring Boot version from pom.xml via application.properties: 
+        <span th:text="${springBootVersion}">N/A</span> <br />
+
+        Application name from Maven via application.properties: 
+        <span th:text="${applicationName}">N/A</span> <br />
+
+        Build version from Maven via application.properties: 
+        <span th:text="${buildVersion}">N/A</span> <br />
+
+        Build timestamp from Maven via application.properties: 
+        <span th:text="${buildTimestamp}">N/A</span> <br />
+
+        <h1 th:text="${counterValue}"></h1>
     </body>
 </html>
