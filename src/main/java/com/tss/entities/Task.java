@@ -30,12 +30,9 @@ public class Task implements Serializable {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    // Konstruktor bezparametrowy (wymagany przez JPA)
     public Task() {
         this.createdAt = LocalDateTime.now();
     }
-
-    // Gettery i settery
 
     public Long getId() {
         return id;

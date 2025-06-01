@@ -10,16 +10,12 @@ import org.springframework.boot.info.BuildProperties;
 import com.tss.components.SessionComponent;
 import org.springframework.core.SpringVersion;
 
-import com.tss.repositories.TaskRepository;
+import com.tss.services.TaskService;
+import com.tss.dtos.TaskDTO;
+import java.util.List;
 
 @Controller
 public class MainController {
-    private final TaskRepository taskRepository;
-
-    @Autowired
-    public MainController(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
     
     @Autowired
     SessionComponent sessionComponent;
@@ -70,9 +66,13 @@ public class MainController {
         return "userinfo.html";
     }
     
+    
+    @Autowired
+    private TaskService taskService;
     @RequestMapping("/showtasks")
     public String showAllTasks(Model model) {
-        model.addAttribute("tasks", taskRepository.findAllByOrderByNameAsc());
+        List<TaskDTO> tasks = taskService.getAllTasks();
+        model.addAttribute("tasks", tasks);        
         return "showtasks.html";
     }
 }
