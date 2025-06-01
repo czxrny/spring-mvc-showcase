@@ -18,8 +18,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.tss.repositories.TaskRepository;
 import java.time.LocalDateTime;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class MainController {
@@ -97,8 +99,6 @@ public class MainController {
 
     @PostMapping("/addtask")
     public String addTask(@ModelAttribute Task task, BindingResult result, Model model) {
-                System.err.println("wszed");
-
         if (result.hasErrors()) {
             System.err.println(result.getAllErrors());
             return "redirect:/showtasks";
@@ -109,5 +109,11 @@ public class MainController {
         return "redirect:/showtasks";
     }
     
-    
+    @GetMapping("/deleteTask/{id}")
+    public String deleteTask(@PathVariable("id") long id, Model model) {
+        Task task = taskRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Invalid task Id:" + id));
+        taskRepository.delete(task);
+        return "redirect:/showtasks";    
+    }
 }

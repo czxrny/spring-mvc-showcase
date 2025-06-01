@@ -1,6 +1,10 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Task List</title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous"></link>
+        <link rel="stylesheet"
+              href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous"></link>
     <style>
         table {
             border-collapse: collapse;
@@ -21,6 +25,14 @@
         h2 {
             text-align: center;
         }
+        .delete-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
     </style>
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
@@ -37,6 +49,7 @@
             <th>Created At</th>
             <th>Due To</th>
             <th>Priority</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -50,15 +63,21 @@
             <td th:text="${task.createdAt}"></td>
             <td th:text="${task.dueTo}"></td>
             <td th:text="${task.priority}"></td>
+            <td>
+                <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">
+                <i class="fas fa-trash-alt"></i> Delete </a>
+            </td>
         </tr>
     </tbody>
 </table>
-    <div class="container">
-        <div class="card">
-            <div class="card-title">Add task</div>
-            <div class="card-description">Add new task.</div>
-            <a class="button" th:href="@{/showAddTaskForm}">Go</a>
-        </div>
+
+<div class="container">
+    <div class="card">
+        <div class="card-title">Add task</div>
+        <div class="card-description">Add new task.</div>
+        <a class="button" th:href="@{/showAddTaskForm}">Go</a>
+    </div>
+</div>
+
 </body>
 </html>
-
