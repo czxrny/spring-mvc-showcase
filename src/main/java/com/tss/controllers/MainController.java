@@ -34,24 +34,30 @@ public class MainController {
     String buildTimestamp;
     
     @RequestMapping("/")
-    public String showUserList(Model model) {
-                // Odczyt danych z buildProperties .. aktualnie go nie ma bo nie skonfigurowano pom.xml, ale bedzie pojawiac sie w webpages/META-INF/
+    public String dashboard(Model model) {   
+        return "index.html";
+    }
+    
+    @RequestMapping("/buildinfo")
+    public String showBuildInfo(Model model) {
         String artifactApp = buildProperties.getArtifact();
         String versionApp = buildProperties.getVersion();
         
-        // Odczyt wersji spring przez klase SpringVersion!
         String springVersion = SpringVersion.getVersion();
         model.addAttribute("springVersion", springVersion);
         
-        // Parametry z application.properties .. wstrzykniete wczesniej za pomoca @Value
         model.addAttribute("jdkVersion", myjdkversion);
         model.addAttribute("springBootVersion", springbootversion);
         model.addAttribute("applicationName", applicationName);
         model.addAttribute("buildVersion", buildVersion);
-        model.addAttribute("buildTimestamp", buildTimestamp);
+        model.addAttribute("buildTimestamp", buildTimestamp);   
+        return "buildinfo.html";
+    }
         
+    @RequestMapping("/userinfo")
+    public String showUserInfo(Model model) {
         sessionComponent.increaseCounter();
         model.addAttribute("counterValue", sessionComponent.getCounter());
-        return "index.html";
+        return "userinfo.html";
     }
 }

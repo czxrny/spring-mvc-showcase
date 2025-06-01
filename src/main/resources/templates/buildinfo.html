@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Build Info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <a th:href="@{/actuator}">Actuator</a> <br />
+            <a th:href="@{/actuator/info}">Actuator Info</a> <br />
+        </div>
+
+        Spring version: <span th:text="${springVersion}">N/A</span> <br />
+
+        JDK version from pom.xml via application.properties: 
+        <span th:text="${jdkVersion}">N/A</span> <br />
+
+        Spring Boot version from pom.xml via application.properties: 
+        <span th:text="${springBootVersion}">N/A</span> <br />
+
+        Application name from Maven via application.properties: 
+        <span th:text="${applicationName}">N/A</span> <br />
+
+        Build version from Maven via application.properties: 
+        <span th:text="${buildVersion}">N/A</span> <br />
+
+        Build timestamp from Maven via application.properties: 
+        <span th:text="${buildTimestamp}">N/A</span> <br />
+    </body>
+</html>
