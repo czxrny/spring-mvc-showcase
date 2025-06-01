@@ -1,4 +1,4 @@
-package com.SpringMvcShowcase;
+package com.tss.SpringMvcShowcase;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

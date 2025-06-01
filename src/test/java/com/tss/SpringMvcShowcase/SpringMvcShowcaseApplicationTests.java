@@ -1,4 +1,4 @@
-package com.SpringMvcShowcase;
+package com.tss.SpringMvcShowcase;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
