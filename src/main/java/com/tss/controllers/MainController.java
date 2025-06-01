@@ -10,8 +10,17 @@ import org.springframework.boot.info.BuildProperties;
 import com.tss.components.SessionComponent;
 import org.springframework.core.SpringVersion;
 
+import com.tss.repositories.TaskRepository;
+
 @Controller
 public class MainController {
+    private final TaskRepository taskRepository;
+
+    @Autowired
+    public MainController(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+    
     @Autowired
     SessionComponent sessionComponent;
     
@@ -59,5 +68,11 @@ public class MainController {
         sessionComponent.increaseCounter();
         model.addAttribute("counterValue", sessionComponent.getCounter());
         return "userinfo.html";
+    }
+    
+    @RequestMapping("/showtasks")
+    public String showAllTasks(Model model) {
+        model.addAttribute("tasks", taskRepository.findAllByOrderByNameAsc());
+        return "showtasks.html";
     }
 }

@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #eaeaea;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Task List (loaded directly from Task entity)</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Created At</th>
+            <th>Due To</th>
+            <th>Priority</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:if="${tasks == null or #lists.isEmpty(tasks)}">
+            <td colspan="6">No tasks found!</td>
+        </tr>
+        <tr th:each="task : ${tasks}" th:unless="${tasks == null or #lists.isEmpty(tasks)}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.name}"></td>
+            <td th:text="${task.description}"></td>
+            <td th:text="${#temporals.format(task.createdAt, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${#temporals.format(task.dueTo, 'yyyy-MM-dd HH:mm')}"></td>
+            <td th:text="${task.priority}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
