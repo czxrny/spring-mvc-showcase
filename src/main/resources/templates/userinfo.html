@@ -7,7 +7,12 @@
     <link rel="stylesheet" th:href="@{/css/infoboxes.css}" />
 </head>
 <body>
+    <h2>Session info</h2>
     <div class="info-box-container">
+        <div class="info-box">
+            <span class="label">Currently logged as: </span>
+            <span class="value" th:text="${username}">0</span>
+        </div>
         <div class="info-box">
             <span class="label">Counter value: </span>
             <span class="value" th:text="${counterValue}">0</span>

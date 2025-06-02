@@ -18,6 +18,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.tss.repositories.TaskRepository;
 import java.time.LocalDateTime;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -75,14 +76,14 @@ public class MainController {
         return "buildinfo.html";
     }
         
-    @RequestMapping("/userinfo")
-    public String showUserInfo(Model model) {
+    @GetMapping("/userinfo")
+    public String showUserInfo(Model model, Authentication authentication) {
         sessionComponent.increaseCounter();
         model.addAttribute("counterValue", sessionComponent.getCounter());
+        model.addAttribute("username", authentication.getName());
         return "userinfo.html";
     }
-    
-    
+ 
     @Autowired
     private TaskService taskService;
     @RequestMapping("/showtasks")
