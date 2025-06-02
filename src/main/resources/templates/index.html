@@ -8,22 +8,30 @@
     <div class="container">
         <div class="card">
             <div class="card-title">User info</div>
-            <div class="card-description">Get current user info.</div>
+            <div class="card-description">
+                Get current authenticated user info from Spring Security session and components.
+            </div>
             <a class="button" th:href="@{/userinfo}">Go</a>
         </div>
         <div class="card">
             <div class="card-title">Build info</div>
-            <div class="card-description">Get application build info.</div>
+            <div class="card-description">
+                See build details from Spring Boot Actuator and Maven properties files.
+            </div>
             <a class="button" th:href="@{/buildinfo}">Go</a>
         </div>
         <div class="card">
-            <div class="card-title">CRUD Implementation</div>
-            <div class="card-description">Check out the CRUD mysql implementation.</div>
+            <div class="card-title">CRUD with JPA & Hibernate</div>
+            <div class="card-description">
+                Explore CRUD operations using Spring Data JPA and Hibernate ORM entities.
+            </div>
             <a class="button" th:href="@{/showtasks}">Go</a>
         </div>
         <div class="card">
-            <div class="card-title">REST GET Endpoint</div>
-            <div class="card-description">Get all task data in JSON via REST request.</div>
+            <div class="card-title">RESTful API Endpoint</div>
+            <div class="card-description">
+                Retrieve all tasks as JSON via a REST GET endpoint for front-end use.
+            </div>
             <a class="button" th:href="@{/tasks/}">Go</a>
         </div>
     </div>
