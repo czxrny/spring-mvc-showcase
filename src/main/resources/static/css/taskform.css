@@ -1,0 +1,42 @@
+.form-container {
+    width: 70%;
+    margin: 0 auto;
+    background-color: #2e2e2e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #bbb;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: #444;
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 6px;
+}
+
+input[type="submit"] {
+    background-color: #4fc3f7;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #29b6f6;
+}

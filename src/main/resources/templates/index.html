@@ -1,6 +1,7 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xlmns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
     <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
@@ -25,6 +26,9 @@
             <div class="card-description">Get all task data in JSON via REST request.</div>
             <a class="button" th:href="@{/tasks/}">Go</a>
         </div>
+    </div>
+    <div class="logout-container">
+        <a class="logout-button" th:href="@{/logout}">Logout</a>
     </div>
 </body>
 </html>

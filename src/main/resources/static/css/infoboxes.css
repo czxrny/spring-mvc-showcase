@@ -1,0 +1,31 @@
+.info-box-container {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.info-box {
+    background-color: #333;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.info-box a {
+    color: #4fc3f7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.info-box a:hover {
+    text-decoration: underline;
+}
+
+.label {
+    font-weight: bold;
+    color: #bbb;
+}
+
+.value {
+    color: #fff;
+}

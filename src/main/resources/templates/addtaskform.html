@@ -7,12 +7,11 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous" />
     <link rel="stylesheet"
           href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous" />
-    <link rel="stylesheet" th:href="@{/css/task_edit.css}" />
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/taskform.css}" />
 </head>
 <body>
-
-    <h1>Add a Task</h1>
-
+    <h2>Add a Task</h2>
     <div class="form-container">
         <form th:action="@{/addtask}" th:object="${task}" method="post">
             <div class="form-group">
@@ -40,6 +39,8 @@
             </div>
         </form>
     </div>
-
+    <div class="return-container">
+        <a class="button" th:href="@{/showtasks}">← Go back</a>
+    </div>
 </body>
 </html>

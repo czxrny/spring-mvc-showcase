@@ -1,0 +1,26 @@
+/* === Table === */
+table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto 40px auto;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+}
+
+th, td {
+    border: 1px solid #555;
+    padding: 12px 15px;
+    text-align: center;
+    color: #ddd;
+}
+
+th {
+    background-color: #444;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #383838;
+}

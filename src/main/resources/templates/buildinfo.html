@@ -3,49 +3,11 @@
 <head>
     <title>Build Info</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-        body {
-            background-color: #1e1e1e;
-            color: #f0f0f0;
-            font-family: Arial, sans-serif;
-            padding: 20px;
-        }
-
-        .container {
-            width: 70%;
-            margin: 0 auto;
-        }
-
-        .info-box {
-            background-color: #333;
-            padding: 15px 20px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-
-        .info-box a {
-            color: #4fc3f7;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .info-box a:hover {
-            text-decoration: underline;
-        }
-
-        .label {
-            font-weight: bold;
-            color: #bbb;
-        }
-
-        .value {
-            color: #fff;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/infoboxes.css}" />
 </head>
 <body>
-    <div class="container">
+    <div class="info-box-container">
         <div class="info-box">
             <a th:href="@{/actuator}">Actuator</a><br/>
             <a th:href="@{/actuator/info}">Actuator Info</a>
@@ -80,6 +42,9 @@
             <span class="label">Build timestamp from Maven via application.properties: </span>
             <span class="value" th:text="${buildTimestamp}">N/A</span>
         </div>
+    <div class="return-container">
+        <a class="button" th:href="@{/}">← Go back</a>
+    </div>
     </div>
 </body>
 </html>
