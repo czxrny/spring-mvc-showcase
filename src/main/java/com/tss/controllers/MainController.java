@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.tss.repositories.TaskRepository;
 import java.time.LocalDateTime;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -80,7 +82,7 @@ public class MainController {
     public String showUserInfo(Model model, Authentication authentication) {
         sessionComponent.increaseCounter();
         model.addAttribute("counterValue", sessionComponent.getCounter());
-        model.addAttribute("username", authentication.getName());
+        model.addAttribute("username", authentication.getName()); 
         return "userinfo.html";
     }
  
@@ -89,7 +91,11 @@ public class MainController {
     @RequestMapping("/showtasks")
     public String showAllTasks(Model model) {
         List<TaskDTO> tasks = taskService.getAllTasks();
-        model.addAttribute("tasks", tasks);        
+        model.addAttribute("tasks", tasks);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        boolean isAdmin = authentication != null &&
+                      authentication.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        model.addAttribute("isAdmin", isAdmin);
         return "showtasks.html";
     }
     
