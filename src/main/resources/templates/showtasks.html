@@ -35,17 +35,19 @@
             <td th:text="${task.priority}"></td>
             <td>
                 <div th:if="${isAdmin}">
-                  <a th:href="@{/showEditTaskForm/{id}(id=${task.id})}" class="btn btn-primary mr-1">
-                    <i class="fas fa-edit"></i> Edit
-                  </a>
-                  <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">
-                    <i class="fas fa-trash-alt"></i> Delete
-                  </a>
+                    <div style="display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                        <a th:href="@{/showEditTaskForm/{id}(id=${task.id})}" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a th:href="@{/deleteTask/{id}(id=${task.id})}" class="btn btn-danger">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </div>
                 </div>
                 <div th:unless="${isAdmin}">
-                  TO EDIT ASSET LOG AS ADMIN
+                    TO EDIT ASSET LOG AS ADMIN
                 </div>
-          </td>
+            </td>
         </tr>
         </tbody>
     </table>
