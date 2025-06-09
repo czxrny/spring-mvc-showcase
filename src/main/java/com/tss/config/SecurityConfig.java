@@ -19,14 +19,14 @@ public class SecurityConfig {
     @Autowired
     @Qualifier("dataSourceAuth")
     private DataSource dataSourceAuth;
-    
+
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication().dataSource(dataSourceAuth)
-            .usersByUsernameQuery(
-                "select user_name,user_pass_crypt,enabled from users where user_name=?")
-            .authoritiesByUsernameQuery(
-                "select user_name, role_name from user_roles where user_name=?");
+                .usersByUsernameQuery(
+                        "select user_name,user_pass_crypt,enabled from users where user_name=?")
+                .authoritiesByUsernameQuery(
+                        "select user_name, role_name from user_roles where user_name=?");
     }
 
     @Bean
@@ -34,21 +34,21 @@ public class SecurityConfig {
         PasswordEncoder encoder = new BCryptPasswordEncoder(12);
         return encoder;
     }
-    
+
     @Bean
     SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.authorizeRequests()
-            .antMatchers("/deleteTask/**", "/showEditTaskForm/**", "/edittask/**").hasRole("ADMIN")        
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-            .permitAll()
-            .and()
-            .requiresChannel()
-            .anyRequest()
-            .requiresSecure();
-                
+                .antMatchers("/deleteTask/**", "/showEditTaskForm/**", "/edittask/**").hasRole("ADMIN")
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .permitAll()
+                .and()
+                .requiresChannel()
+                .anyRequest()
+                .requiresSecure();
+
         return httpSecurity.build();
     }
 }

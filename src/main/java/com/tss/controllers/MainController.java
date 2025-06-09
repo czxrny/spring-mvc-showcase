@@ -142,4 +142,9 @@ public class MainController {
         taskRepository.delete(task);
         return "redirect:/showtasks";    
     }
+    
+    @GetMapping("/webSocketJson")
+    public String showWebSocketPage() {
+        return "websocketjson.html"; 
+    }
 }

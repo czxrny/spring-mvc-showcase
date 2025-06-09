@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Web Sockets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script th:src="@{/js/functionsWebSockets.js}"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" crossorigin="anonymous"/>
+    <link rel="stylesheet" th:href="@{/css/websocketstyle.css}" />
+</head>
+<body>
+    <h1>WebSocket</h1>
+
+    <div>
+        <form action="">
+            <input onclick="doSend(messageTextID.value)" value="Send..." type="button"/>
+            <input id="messageTextID" name="messageText" value="Hello WebSocket!" type="text"/>
+            <input id="messageStatusID" name="messageStatus" value="...." type="text" size="60"/>
+        </form>
+        <h2 style="text-align: center;">Chart based on WebSocket/JSON data</h2>
+        <div style="text-align: center;">
+            <div id="chartContainer" style="height: 300px; width: 50%;"></div>
+        </div>
+        <a th:href="@{/}" class="btn btn-primary">Home <i class="fas fa-sign-out-alt"></i></a>
+    </div>
+</body>
+</html>
